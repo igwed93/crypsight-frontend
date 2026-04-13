@@ -17,20 +17,23 @@
 
 ## Project Structure
 
+```
 app/
 ├── layout.tsx          # Root layout — fonts, metadata, navbar, footer
 ├── page.tsx            # Homepage — assembles all sections
 └── globals.css         # Design tokens, Tailwind theme, shadcn variables
+
 components/
 ├── ui/                 # shadcn auto-generated components (do not edit manually)
 ├── layout/
 │   ├── Navbar.tsx      # Fixed top navbar with wallet connection
 │   └── Footer.tsx      # Site footer with link columns
 └── sections/
-├── Hero.tsx                  # Landing hero with glow effect and CTAs
-├── EcosystemVerticals.tsx    # DeFi, Wallets, NFTs, Infrastructure cards
-├── ProtocolBattleground.tsx  # Side-by-side protocol comparison cards
-└── NewsletterCTA.tsx         # Email subscription section
+    ├── Hero.tsx                  # Landing hero with glow effect and CTAs
+    ├── EcosystemVerticals.tsx    # DeFi, Wallets, NFTs, Infrastructure cards
+    ├── ProtocolBattleground.tsx  # Side-by-side protocol comparison cards
+    └── NewsletterCTA.tsx         # Email subscription section
+```
 
 ---
 
@@ -85,7 +88,7 @@ To change a colour across the entire app, update its token here — no hunting t
 
 ## Key Conventions
 
-**Server vs Client Components** — every component is a Server Component by default (no JavaScript shipped to the browser). Only components that need hooks or interactivity use `"use client"`. Currently only `Navbar` (uses `usePathname`) and `NewsletterCTA` (uses `useState`) are client components.
+**Server vs Client Components** — every component is a Server Component by default (no JavaScript shipped to the browser). Only components that need hooks or interactivity use "use client".
 
 **Data-driven components** — cards, nav links, and footer columns are all driven by arrays defined at the top of each file. Adding a new card or link means editing the data array, not the JSX.
 
