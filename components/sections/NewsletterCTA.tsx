@@ -1,65 +1,77 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 
 export default function NewsletterCTA() {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
   function handleSubmit() {
-    if (!email || !email.includes("@")) return;
+    // Basic validation for Email or ENS (which usually contains .eth)
+    if (!email || (!email.includes('@') && !email.includes('.eth'))) return;
     setSubmitted(true);
-    setEmail("");
+    setEmail('');
   }
 
   return (
-    <section className="relative bg-bg-primary py-32 overflow-hidden">
+    <section className="bg-bg-primary py-20 px-6">
+      <div className="mx-auto max-w-5xl">
+        {/* The Gradient Card */}
+        <div 
+          className="relative overflow-hidden rounded-(--radius-lg) p-8 md:p-16 text-center shadow-2xl"
+          style={{
+            background: `linear-gradient(135deg, #7c3aed 0%, #080b14 40%, #080b14 60%, #06b6d4 100%)`,
+          }}
+        >
+          {/* Subtle overlay to soften the gradient transitions */}
+          <div className="absolute inset-0 bg-black/10 pointer-events-none" />
 
-      {/* Background glow */}
-      <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-        <div className="h-125 w-175 rounded-full bg-brand-purple opacity-10 blur-[140px]" />
-      </div>
+          <div className="relative z-10 flex flex-col items-center gap-6">
+            {/* Heading */}
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white">
+              Architecting the Future
+            </h2>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6">
-        <div className="flex flex-col items-center gap-8 text-center">
+            {/* Subtitle - Using text-text-secondary as defined in your CSS */}
+            <p className="max-w-2xl text-base md:text-lg leading-relaxed text-text-secondary opacity-90">
+              Join 50,000+ analysts receiving high-fidelity on-chain intelligence every
+              Monday morning.
+            </p>
 
-          {/* Heading */}
-          <h2 className="whitespace-nowrap text-6xl font-bold tracking-tight text-white/80">
-            Stay ahead of the curve.
-          </h2>
-
-          {/* Subtitle */}
-          <p className="text-lg leading-relaxed text-text-secondary">
-            Weekly alpha delivered directly to your inbox. Institutional
-            insights, decoded for everyone.
-          </p>
-
-          {/* Input row */}
-          {submitted ? (
-            <div className="flex items-center gap-2 rounded-md bg-brand-cyan/10 px-8 py-4 text-lg text-brand-cyan">
-              You're on the list. Alpha incoming.
-            </div>
-          ) : (
-            <div className="mt-2 relative w-full max-w-xl">
-                <Input
-                    type="email"
-                    placeholder="Enter your email address"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
-                    className="w-full rounded-md border-0 bg-bg-card/60 backdrop-blur-sm text-white text-base placeholder:text-text-muted focus-visible:ring-brand-purple/30 focus-visible:ring-1 h-16 px-5 pr-36"
-                />
-                <Button
+            {/* Input row */}
+            <div className="mt-4 w-full max-w-2xl">
+              {submitted ? (
+                <div className="rounded-full bg-brand-cyan/10 px-8 py-4 text-lg text-brand-cyan border border-brand-cyan/20">
+                  Welcome to the future. Check your inbox.
+                </div>
+              ) : (
+                <div className="flex flex-col md:flex-row items-center gap-3 w-full">
+                  <div className="relative grow w-full">
+                    <Input
+                      type="text"
+                      placeholder="Enter your ENS or Email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      onKeyDown={(e) => e.key === 'Enter' && handleSubmit()}
+                      className="w-full h-14 rounded-pill md:rounded-r-none md:rounded-l-pill border-none bg-[#111c2d]/60 backdrop-blur-md text-white px-6 placeholder:text-text-muted focus-visible:ring-1 focus-visible:ring-white/20"
+                    />
+                  </div>
+                  
+                  <Button
                     onClick={handleSubmit}
-                    className="absolute right-1.5 top-1/2 -translate-y-1/2 rounded-md bg-brand-purple hover:bg-brand-purple-dim text-[#1a0a2e] font-semibold text-sm px-5 h-13"
-                >
-                    Subscribe
-                </Button>
+                    className="w-full md:w-auto h-14 px-10 rounded-pill md:rounded-l-none md:rounded-r-pill bg-white hover:bg-white/90 text-black font-bold transition-all shrink-0"
+                  >
+                    Join Architect
+                  </Button>
+                </div>
+              )}
             </div>
-          )}
-
+            
+            {/* Design detail: mobile users often prefer the button nested inside on desktop, 
+                but for small screens, a stacked approach (as coded above) is more accessible. */}
+          </div>
         </div>
       </div>
     </section>

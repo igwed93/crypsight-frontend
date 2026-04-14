@@ -1,15 +1,21 @@
-import Hero from "@/components/sections/Hero";
-import EcosystemVerticals from "@/components/sections/EcosystemVerticals";
-import ProtocolBattleground from "@/components/sections/ProtocolBattleground";
-import NewsletterCTA from "@/components/sections/NewsletterCTA";
+import Hero from '@/components/sections/Hero';
+import EcosystemVerticals from '@/components/sections/EcosystemVerticals';
+import TrendingProtocols from '@/components/sections/TrendingProtocols';
+import KnowledgeVault from '@/components/sections/KnowledgeVault';
+import PrecisionComparisons from '@/components/sections/PrecisionComparisons';
+import EcosystemSignals from '@/components/sections/EcosystemSignals';
+import ArchitectCTA from '@/components/sections/NewsletterCTA';
 
 export default function Home() {
   return (
     <main className="pt-16">
       <Hero />
       <EcosystemVerticals />
-      <ProtocolBattleground />
-      <NewsletterCTA />
+      <TrendingProtocols />
+      <KnowledgeVault />
+      <PrecisionComparisons />
+      <EcosystemSignals />
+      <ArchitectCTA />
     </main>
   );
 }

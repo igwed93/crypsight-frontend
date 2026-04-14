@@ -73,14 +73,14 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 All design tokens live in `app/globals.css` under the `@theme` block. This is the single source of truth for the entire project.
 
-| Token | Value | Usage |
-|---|---|---|
-| `--color-bg-primary` | `#080b14` | Page background, hero, sections |
-| `--color-bg-secondary` | `#0d1117` | Navbar, footer |
-| `--color-bg-card` | `#111827` | Cards |
-| `--color-brand-purple` | `#a855f7` | Primary CTA, logo, icons |
-| `--color-brand-cyan` | `#22d3ee` | Active states, accents, progress bars |
-| `--color-text-secondary` | `#9ca3af` | Subtitles, descriptions |
+| Token                    | Value     | Usage                                 |
+| ------------------------ | --------- | ------------------------------------- |
+| `--color-bg-primary`     | `#080b14` | Page background, hero, sections       |
+| `--color-bg-secondary`   | `#0d1117` | Navbar, footer                        |
+| `--color-bg-card`        | `#111827` | Cards                                 |
+| `--color-brand-purple`   | `#a855f7` | Primary CTA, logo, icons              |
+| `--color-brand-cyan`     | `#22d3ee` | Active states, accents, progress bars |
+| `--color-text-secondary` | `#9ca3af` | Subtitles, descriptions               |
 
 To change a colour across the entire app, update its token here — no hunting through component files.
 

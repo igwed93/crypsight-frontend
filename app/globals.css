@@ -1,29 +1,28 @@
-@import "tailwindcss";
-@import "shadcn/tailwind.css";
-
+@import 'tailwindcss';
+@import 'shadcn/tailwind.css';
 
 @theme {
   /* ── Fonts ── */
   --font-sans: var(--font-inter), system-ui, sans-serif;
 
   /* ── Brand colours ── */
-  --color-bg-primary:      #080b14;
-  --color-bg-secondary:    #0d1117;
-  --color-bg-card:         #111827;
-  --color-bg-card-hover:   #1a2035;
-  --color-brand-purple:    #a855f7;
-  --color-brand-purple-dim:#7c3aed;
-  --color-brand-cyan:      #22d3ee;
-  --color-brand-cyan-dim:  #06b6d4;
-  --color-text-secondary:  #9ca3af;
-  --color-text-muted:      #4b5563;
-  --color-text-nav:        #d1d5db;
-  --color-border-card:     #1e2d3d;
+  --color-bg-primary: #080b14;
+  --color-bg-secondary: #0d1117;
+  --color-bg-card: #111827;
+  --color-bg-card-hover: #1a2035;
+  --color-brand-purple: #a855f7;
+  --color-brand-purple-dim: #7c3aed;
+  --color-brand-cyan: #22d3ee;
+  --color-brand-cyan-dim: #06b6d4;
+  --color-text-secondary: #9ca3af;
+  --color-text-muted: #4b5563;
+  --color-text-nav: #d1d5db;
+  --color-border-card: #1e2d3d;
 
   /* ── Border radius ── */
-  --radius-sm:   6px;
-  --radius-md:   10px;
-  --radius-lg:   16px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
   --radius-pill: 9999px;
 }
 
@@ -65,5 +64,23 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+  }
+}
+
+@layer utilities {
+  @keyframes ethereal-flow {
+    0% {
+      background-position: 0% 0%;
+    }
+    50% {
+      background-position: 100% 100%;
+    }
+    100% {
+      background-position: 0% 0%;
+    }
+  }
+
+  .animate-ethereal-flow {
+    animation: ethereal-flow 20s linear infinite;
   }
 }
