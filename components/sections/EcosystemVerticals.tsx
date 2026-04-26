@@ -25,7 +25,7 @@ const verticals: Vertical[] = [
     title: 'Layer 1',
     description:
       'Foundational base-layer metrics including security, decentralization, and issuance.',
-    href: '/explore/layer1',
+    href: '/networks',
     iconColor: 'text-brand-purple',
     boxColor: 'bg-brand-purple/10',
   },

@@ -98,11 +98,12 @@ export default function KnowledgeVault() {
               src="/images/defi-control-room.png"
               alt="Advanced DeFi control room interface"
               fill
+              sizes="(min-width: 1024px) 50vw, 100vw"
               className="object-cover object-top"
             />
 
             {/* Gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent" />
+            <div className="absolute inset-0 bg-linear-to-t from-black/95 via-black/40 to-transparent" />
 
             {/* Overlaid content */}
             <div className="absolute bottom-0 left-0 right-0 flex flex-col gap-3 p-6">
