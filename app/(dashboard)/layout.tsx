@@ -1,11 +1,12 @@
 'use client';
 
 import { useSearchParams } from 'next/navigation';
+import { Suspense } from 'react';
 import Sidebar from "@/components/dashboard/Sidebar";
 import TopNav from "@/components/dashboard/TopNav";
 import StatusFooter from "@/components/dashboard/StatusFooter";
 
-export default function DashboardLayout({
+function DashboardLayoutContent({
     children,
 }: {
     children: React.ReactNode;
@@ -30,10 +31,22 @@ export default function DashboardLayout({
                 <main className="flex-1 overflow-y-auto p-4 lg:p-8">
                     {children}
                 </main>
-                
+
                 {/* 4. Status Footer - Now visible on mobile */}
                 <StatusFooter />
             </div>
         </div>
     )
+}
+
+export default function DashboardLayout({
+    children,
+}: {
+    children: React.ReactNode;
+}) {
+    return (
+        <Suspense fallback={<div className="flex h-screen bg-bg-primary items-center justify-center text-white">Loading...</div>}>
+            <DashboardLayoutContent>{children}</DashboardLayoutContent>
+        </Suspense>
+    );
 }

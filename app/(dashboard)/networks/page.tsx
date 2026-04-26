@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo, memo, useEffect } from 'react';
+import { useState, useMemo, memo, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Search, SlidersHorizontal, ChevronRight, Bell, Settings, X } from 'lucide-react';
 import { Input } from '@/components/ui/input';
@@ -21,17 +21,17 @@ const MemoizedFilterContent = memo(({
       <div className="space-y-4">
         <p className="text-[11px] font-bold text-text-muted uppercase tracking-tight">Network Type</p>
         <div className="flex p-1 rounded-xl bg-bg-primary border border-white/5">
-          <button 
+          <button
             onClick={() => setNetworkType('L1')}
             className={`flex-1 py-2 text-[10px] font-bold rounded-lg transition-all ${networkType === 'L1' ? 'bg-brand-purple/20 text-brand-purple border border-brand-purple/30' : 'text-text-muted'}`}
           >Layer 1</button>
-          <button 
+          <button
             onClick={() => setNetworkType('L2')}
             className={`flex-1 py-2 text-[10px] font-bold rounded-lg transition-all ${networkType === 'L2' ? 'bg-brand-purple/20 text-brand-purple border border-brand-purple/30' : 'text-text-muted'}`}
           >Layer 2</button>
         </div>
       </div>
-      
+
       {/* Consensus */}
       <div className="space-y-4">
         <p className="text-[11px] font-bold text-text-muted uppercase">Consensus Mechanism</p>
@@ -87,6 +87,14 @@ const MemoizedFilterContent = memo(({
 MemoizedFilterContent.displayName = "FilterContent";
 
 export default function NetworksPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-bg-primary text-white flex items-center justify-center">Loading...</div>}>
+      <NetworksPageContent />
+    </Suspense>
+  );
+}
+
+function NetworksPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
