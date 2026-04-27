@@ -42,22 +42,22 @@ export default function ComparisonView({ selectedNetworks }: ComparisonViewProps
         <MetricCard 
           title="Average Fees"
           icon={<DollarSign size={18} />}
-          labelA={netA.ticker} valA={netA.fees || '$1.5 - $45'} subA="High"
-          labelB={netB.ticker} valB={netB.fees || '< $0.001'} subB="Fixed"
+          labelA={netA.ticker} valA={netA.fees || '$1.5 - $45'} subA="High Volatility"
+          labelB={netB.ticker} valB={netB.fees || '< $0.001'} subB="Fixed Low Cost"
           isPositiveB 
         />
         <MetricCard 
           title="Block Time"
           icon={<Clock size={18} />}
-          labelA={netA.ticker} valA={netA.blockTime || '12.0s'} subA="Det."
-          labelB={netB.ticker} valB={netB.blockTime || '400ms'} subB="Fast"
+          labelA={netA.ticker} valA={netA.blockTime || '12.0s'} subA="Deterministic"
+          labelB={netB.ticker} valB={netB.blockTime || '400ms'} subB="Ultra-Fast"
           isPositiveB 
         />
         <MetricCard 
           title="Market Cap (USD)"
           icon={<BarChart3 size={18} />}
-          labelA={netA.ticker} valA={netA.marketCap || '$325B'} subA="#2"
-          labelB={netB.ticker} valB={netB.marketCap || '$68B'} subB="#5"
+          labelA={netA.ticker} valA={netA.marketCap || '$325B'} subA="Rank #2"
+          labelB={netB.ticker} valB={netB.marketCap || '$68B'} subB="Rank #5"
         />
       </div>
 
@@ -108,33 +108,38 @@ export default function ComparisonView({ selectedNetworks }: ComparisonViewProps
 
     {/* 3. Premium Analytics Banner */}
     <div className="relative p-8 lg:p-12 rounded-[40px] bg-[#0b1221] border border-white/5 overflow-hidden">
-      <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-10">
+      <div className="relative z-10 grid grid-cols-1 gap-20 lg:grid-cols-4 lg:items-center lg:gap-24">
         
-        <div className="space-y-8 z-20 max-w-2xl">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/5 rounded-full border border-white/10">
-            <span className="text-brand-purple text-xs">★</span>
-            <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-text-secondary">Premium Only</p>
+        <div className="z-20 col-span-1 lg:col-span-3 max-w-2xl space-y-12 lg:space-y-8">
+          {/* Header Section */}
+          <div className="space-y-6">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/5 rounded-full border border-white/10">
+              <span className="text-brand-purple text-xs">★</span>
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-text-secondary">Premium Only</p>
+            </div>
+            
+            <h2 className="text-4xl lg:text-5xl font-bold tracking-tight text-white">
+              Unlock Advanced Analytics
+            </h2>
+            
+            <p className="text-text-secondary text-sm lg:text-base leading-relaxed max-w-xl">
+              Gain deep-tier insights into ecosystem growth, developer retention metrics, and real-time performance stress tests across 50+ blockchains.
+            </p>
           </div>
-          
-          <h2 className="text-4xl lg:text-5xl font-bold tracking-tight text-white">
-            Unlock Advanced Analytics
-          </h2>
-          
-          <p className="text-text-secondary text-sm lg:text-base leading-relaxed max-w-xl">
-            Gain deep-tier insights into ecosystem growth, developer retention metrics, and real-time performance stress tests across 50+ blockchains.
-          </p>
 
-          {/* The Pulsar Icons from your screenshot */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-6">
-            <PremiumFeature text="Ecosystem & Adoption Stats" />
-            <PremiumFeature text="Developer Experience Metrics" />
-            <PremiumFeature text="MEV & Validator Profitability" />
-            <PremiumFeature text="Historic Performance Overlays" />
+          {/* Pulsar Icons Section */}
+          <div className="pb-8 lg:pb-0">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-6">
+              <PremiumFeature text="Ecosystem & Adoption Stats" />
+              <PremiumFeature text="Developer Experience Metrics" />
+              <PremiumFeature text="MEV & Validator Profitability" />
+              <PremiumFeature text="Historic Performance Overlays" />
+            </div>
           </div>
         </div>
 
         {/* The Fixed "Upgrade" Button */}
-        <div className="flex flex-col gap-4 items-center">
+        <div className="flex flex-col gap-4 items-center lg:col-span-1 lg:w-md">
           <button 
             style={{
               background: 'linear-gradient(to right, rgba(168, 85, 247, 0.15), #a855f7)',
@@ -171,7 +176,7 @@ function MetricCard({ title, icon, labelA, valA, subA, labelB, valB, subB, isPos
         <div className="h-8 lg:h-10 w-px bg-white/10" />
         <div className="space-y-1 text-right">
           <p className="text-[8px] lg:text-[9px] font-bold text-brand-cyan uppercase">{labelB}</p>
-          <p className={cn("text-lg lg:text-2xl font-bold leading-none", isPositiveB ? "text-brand-cyan" : "text-white")}>
+          <p className={cn("text-lg lg:text-2xl font-bold leading-none text-brand-cyan")}>
             {valB}
           </p>
           <p className="text-[8px] text-text-muted">{subB}</p>

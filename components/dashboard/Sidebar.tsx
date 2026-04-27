@@ -55,7 +55,7 @@ export default function Sidebar({ mode = 'explore' }: SidebarProps) {
       {/* Brand Logo Area */}
       <div className="p-6">
         <Link href="/" className="gradient-text text-xl font-bold tracking-tight">
-          Luminescent Ledger
+          Crypsight
         </Link>
       </div>
 

@@ -182,7 +182,7 @@ function NetworksPageContent() {
               <div className="w-6 h-6 rounded bg-brand-purple/20 flex items-center justify-center">
                  <div className="w-3 h-3 border-2 border-brand-purple rounded-sm" />
               </div>
-              <span className="text-sm font-bold">Luminescent Ledger</span>
+              <span className="text-sm font-bold">Crysight</span>
             </div>
             <div className="flex items-center gap-4 text-text-muted">
               <Bell size={18} />
@@ -240,6 +240,12 @@ function NetworksPageContent() {
           <h1 className="text-2xl lg:text-4xl font-bold tracking-tight">
             {isComparing ? "Compare Blockchains" : "Explore Blockchain Networks"}
           </h1>
+          <p className="text-sm lg:text-base text-text-secondary max-w-2xl">
+            {isComparing 
+              ? "Contrast institutional data across the ecosystem's most dominant Layer 1 networks: Current view: Basic Analysis."
+              : "Discover and compare Layer 1 Blockchain networks. Analyze key metrics, understand their ecoosystems, and find the right platform for your needs."
+            }
+          </p>
         </div>
 
         {isComparing ? (

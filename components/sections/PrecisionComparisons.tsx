@@ -113,7 +113,7 @@ export default function PrecisionComparisons() {
 
         {/* CTA */}
         <div className="flex items-center justify-center p-10">
-          <Link href="/compare">
+          <Link href="/networks">
             <Button className="rounded-md bg-gradient-to-r from-brand-purple to-brand-cyan px-10 py-4 h-14 text-sm font-semibold text-[#1a0a2e] hover:opacity-90 hover:from-brand-purple-dim hover:to-brand-cyan-dim transition-opacity">
               Start Comparing
             </Button>
