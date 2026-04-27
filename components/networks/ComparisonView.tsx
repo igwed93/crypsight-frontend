@@ -62,7 +62,7 @@ export default function ComparisonView({ selectedNetworks }: ComparisonViewProps
       </div>
 
       {/* 2. Technical Specifications Section */}
-      <div className="space-y-6">
+      <div className="space-y-6 p-6">
         <h3 className="text-lg lg:text-xl font-bold tracking-tight">Technical Specifications</h3>
         
         {/* DESKTOP VIEW: High-end Table */}
@@ -108,14 +108,17 @@ export default function ComparisonView({ selectedNetworks }: ComparisonViewProps
 
     {/* 3. Premium Analytics Banner */}
     <div className="relative p-8 lg:p-12 rounded-[40px] bg-[#0b1221] border border-white/5 overflow-hidden">
-      <div className="relative z-10 grid grid-cols-1 gap-20 lg:grid-cols-4 lg:items-center lg:gap-24">
+      <div className="relative z-10 flex flex-col lg:flex-row gap-8 lg:gap-12 lg:items-center">
         
-        <div className="z-20 col-span-1 lg:col-span-3 max-w-2xl space-y-12 lg:space-y-8">
+        {/* Left Content Section */}
+        <div className="flex-1 space-y-8">
           {/* Header Section */}
           <div className="space-y-6">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/5 rounded-full border border-white/10">
               <span className="text-brand-purple text-xs">★</span>
-              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-text-secondary">Premium Only</p>
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-text-secondary">
+                Premium Only
+              </p>
             </div>
             
             <h2 className="text-4xl lg:text-5xl font-bold tracking-tight text-white">
@@ -127,40 +130,40 @@ export default function ComparisonView({ selectedNetworks }: ComparisonViewProps
             </p>
           </div>
 
-          {/* Pulsar Icons Section */}
-          <div className="pb-8 lg:pb-0">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-6">
-              <PremiumFeature text="Ecosystem & Adoption Stats" />
-              <PremiumFeature text="Developer Experience Metrics" />
-              <PremiumFeature text="MEV & Validator Profitability" />
-              <PremiumFeature text="Historic Performance Overlays" />
-            </div>
+          {/* Features */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-6">
+            <PremiumFeature text="Ecosystem & Adoption Stats" />
+            <PremiumFeature text="Developer Experience Metrics" />
+            <PremiumFeature text="MEV & Validator Profitability" />
+            <PremiumFeature text="Historic Performance Overlays" />
           </div>
         </div>
 
-        {/* The Fixed "Upgrade" Button */}
-        <div className="flex flex-col gap-4 items-center lg:col-span-1 lg:w-[28rem]">
+        {/* Right Upgrade Section */}
+        <div className="flex flex-col gap-4 items-center lg:items-end lg:flex-shrink-0 lg:w-80">
           <button 
             style={{
               background: 'linear-gradient(to right, rgba(168, 85, 247, 0.15), #a855f7)',
               color: 'white'
             }}
-            className="w-full py-5 px-10 border border-brand-purple rounded-3xl font-bold text-sm lg:text-base transition-all duration-300 cursor-pointer hover:scale-105 hover:shadow-[0_0_30px_rgba(168,85,247,0.6)] hover:shadow-brand-purple/50 hover:bg-linear-to-r hover:from-brand-purple/30 hover:to-brand-purple/90 active:scale-95 animate-pulse hover:animate-none"
+            className="w-full py-5 px-10 border border-brand-purple rounded-3xl font-bold text-sm lg:text-base transition-all duration-300 cursor-pointer hover:scale-105 hover:shadow-[0_0_30px_rgba(168,85,247,0.6)] hover:shadow-brand-purple/50 active:scale-95 animate-pulse hover:animate-none"
           >
             Upgrade to Premium
           </button>
-          <p className="text-[10px] text-text-muted font-medium">Starting at $49/mo billed annually</p>
+          <p className="text-[10px] text-text-muted font-medium text-center lg:text-right">
+            Starting at $49/mo billed annually
+          </p>
         </div>
       </div>
     </div>
-    </div>
+  </div>
   );
 }
 
 // --- MetricCard Helper ---
 function MetricCard({ title, icon, labelA, valA, subA, labelB, valB, subB, isPositiveB }: any) {
   return (
-    <div className="bg-bg-card/40 border border-white/10 rounded-4xl p-5 lg:p-6 space-y-6 lg:space-y-8">
+    <div className="bg-bg-card/40 border border-white/10 rounded-3xl overflow-hidden p-5 lg:p-6 space-y-6 lg:space-y-8">
       <div className="flex items-center justify-between">
         <div className="p-2 lg:p-2.5 bg-white/5 rounded-xl border border-white/5 text-text-muted">
           {icon}
