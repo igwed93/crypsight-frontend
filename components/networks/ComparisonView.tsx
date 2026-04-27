@@ -139,7 +139,7 @@ export default function ComparisonView({ selectedNetworks }: ComparisonViewProps
         </div>
 
         {/* The Fixed "Upgrade" Button */}
-        <div className="flex flex-col gap-4 items-center lg:col-span-1 lg:w-md">
+        <div className="flex flex-col gap-4 items-center lg:col-span-1 lg:w-[28rem]">
           <button 
             style={{
               background: 'linear-gradient(to right, rgba(168, 85, 247, 0.15), #a855f7)',
@@ -160,7 +160,7 @@ export default function ComparisonView({ selectedNetworks }: ComparisonViewProps
 // --- MetricCard Helper ---
 function MetricCard({ title, icon, labelA, valA, subA, labelB, valB, subB, isPositiveB }: any) {
   return (
-    <div className="bg-bg-card/40 border border-white/10 rounded-[28px] lg:rounded-4xl p-5 lg:p-6 space-y-6 lg:space-y-8">
+    <div className="bg-bg-card/40 border border-white/10 rounded-4xl p-5 lg:p-6 space-y-6 lg:space-y-8">
       <div className="flex items-center justify-between">
         <div className="p-2 lg:p-2.5 bg-white/5 rounded-xl border border-white/5 text-text-muted">
           {icon}
