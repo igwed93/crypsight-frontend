@@ -150,7 +150,7 @@ export default function ComparisonView({ selectedNetworks }: ComparisonViewProps
           >
             Upgrade to Premium
           </button>
-          <p className="text-[10px] text-text-muted font-medium text-center lg:text-right">
+          <p className="text-[10px] text-text-muted font-medium text-center">
             Starting at $49/mo billed annually
           </p>
         </div>
