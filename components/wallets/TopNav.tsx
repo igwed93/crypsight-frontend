@@ -1,14 +1,14 @@
 'use client';
-
 import Link from 'next/link';
 import { Bell, Settings, User, Search } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { name: 'Dashboard', href: '/dashboard' },
-  { name: 'Networks', href: '/networks' },
-  { name: 'Portfolio', href: '/portfolio' },
+  { name: 'Explore', href: '/' },
+  { name: 'Compare', href: '/networks' },
+  { name: 'Pricing', href: '#' },
+  { name: 'Docs', href: '#' },
 ];
 
 export default function TopNav() {

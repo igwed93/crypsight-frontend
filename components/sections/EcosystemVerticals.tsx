@@ -43,7 +43,7 @@ const verticals: Vertical[] = [
     title: 'Wallets',
     description:
       'Comprehensive insights into user behaviour, trading patterns, and active addresses.',
-    href: '/explore/wallets',
+    href: '/wallets',
     iconColor: 'text-brand-cyan',
     boxColor: 'bg-brand-cyan/10',
   },
