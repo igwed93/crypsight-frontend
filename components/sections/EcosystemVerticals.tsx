@@ -34,7 +34,7 @@ const verticals: Vertical[] = [
     title: 'DeFi Analytics',
     description:
       'Real-time TVL monitoring and yield optimization signals across 10+ chains.',
-    href: '/explore/defi',
+    href: '/defi',
     iconColor: 'text-brand-cyan',
     boxColor: 'bg-brand-cyan/10',
   },
