@@ -1,14 +1,21 @@
 'use client';
 
+import { Suspense } from 'react';
 import TopNav from "@/components/defi/TopNav";
 import SidebarNav from "@/components/defi/SidebarNav";
 import RightSidebar from "@/components/defi/RightSidebar";
+
+export const dynamic = 'force-dynamic';
 
 export default function DeFiLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-w-screen min-h-screen bg-[#060910] text-white flex flex-col">
       {/* TOP NAVIGATION */}
-      <div className="w-full"><TopNav /></div>
+      <div className="w-full">
+        <Suspense fallback={<div>Loading nav...</div>}>
+          <TopNav />
+        </Suspense>
+      </div>
 
       {/* MAIN GRID LAYOUT */}
       <div className="w-full flex flex-col lg:flex-row">
@@ -22,7 +29,9 @@ export default function DeFiLayout({ children }: { children: React.ReactNode }) 
             This spans the middle 50% of the screen.
         */}
         <main className="w-full md:w-[60%] min-w-600px flex flex-col">
-          {children}
+          <Suspense fallback={<div className="flex items-center justify-center min-h-screen text-white">Loading...</div>}>
+            {children}
+          </Suspense>
         </main>
 
         {/* COLUMN 4: RIGHT SIDEBAR (Academy/Alpha)
