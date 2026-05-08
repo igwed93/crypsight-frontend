@@ -5,14 +5,12 @@ import TopNav from "@/components/defi/TopNav";
 import SidebarNav from "@/components/defi/SidebarNav";
 import RightSidebar from "@/components/defi/RightSidebar";
 
-export const dynamic = 'force-dynamic';
-
 export default function DeFiLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-w-screen min-h-screen bg-[#060910] text-white flex flex-col">
       {/* TOP NAVIGATION */}
       <div className="w-full">
-        <Suspense fallback={<div>Loading nav...</div>}>
+        <Suspense fallback={null}>
           <TopNav />
         </Suspense>
       </div>
@@ -29,7 +27,7 @@ export default function DeFiLayout({ children }: { children: React.ReactNode }) 
             This spans the middle 50% of the screen.
         */}
         <main className="w-full md:w-[60%] min-w-600px flex flex-col">
-          <Suspense fallback={<div className="flex items-center justify-center min-h-screen text-white">Loading...</div>}>
+          <Suspense fallback={null}>
             {children}
           </Suspense>
         </main>
