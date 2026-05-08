@@ -19,15 +19,15 @@ export default function SelectionDock({ selectedIds, onClear }: SelectionDockPro
 
   return (
     <div 
-      className="fixed bottom-10 left-1/2 lg:left-[calc(50%+144px)] -translate-x-1/2 z-[100] w-full max-w-4xl px-4 animate-in slide-in-from-bottom-5"
+      className="fixed bottom-10 left-1/2 lg:left-[calc(50%+144px)] -translate-x-1/2 z-100 w-full max-w-4xl px-4 animate-in slide-in-from-bottom-5"
     >
-      <div className="bg-[#111723] border border-white/10 p-3 pl-8 rounded-[32px] flex items-center justify-between shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
+      <div className="bg-bg-card-hover border border-white/10 p-3 pl-8 rounded-3xl flex items-center justify-between shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
         
         {/* Left Section: Selected Protocol Avatars */}
         <div className="flex items-center gap-8">
           <div className="flex items-center gap-3">
             <span className="text-sm font-bold text-white whitespace-nowrap">
-              <span className="text-brand-cyan mr-1">{selectedIds.length}</span> 
+              <span className="text-brand-cyan mr-1">{selectedIds.length} </span> 
               Projects Selected
             </span>
           </div>
@@ -58,14 +58,14 @@ export default function SelectionDock({ selectedIds, onClear }: SelectionDockPro
         <div className="flex items-center gap-8">
           <button 
             onClick={onClear}
-            className="text-[10px] font-bold text-text-muted hover:text-white uppercase tracking-widest transition-colors"
+            className="text-[10px] font-bold text-brand-cyan hover:text-white uppercase tracking-widest transition-colors"
           >
             Clear All
           </button>
 
           <button className="relative group overflow-hidden bg-brand-purple px-8 py-4 rounded-2xl transition-all hover:scale-[1.02] active:scale-[0.98]">
             {/* Gradient Glow */}
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
+            <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
             
             <div className="relative flex items-center gap-3">
               <span className="text-[10px] font-black uppercase tracking-[0.15em] text-white">
