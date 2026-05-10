@@ -2,7 +2,8 @@
 
 import { useState, useMemo, memo, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { Search, SlidersHorizontal, ChevronRight, Bell, Settings, X } from 'lucide-react';
+import { Search, SlidersHorizontal, ChevronRight, Bell, Settings, X, ChevronLeft } from 'lucide-react';
+import Link from 'next/link';
 import { Input } from '@/components/ui/input';
 import { Slider } from '@/components/ui/slider';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -232,6 +233,7 @@ function NetworksPageContent() {
       {/* MAIN CONTENT AREA */}
       <main className="p-4 lg:p-0 space-y-6 lg:space-y-10 pb-72">
         <div className="space-y-4 pt-4">
+          <Link href="/" className="flex text-brand-cyan hover:text-white text-sm font-bold"><ChevronLeft /> Back to Home</Link>
           {isComparing && (
             <button onClick={handleBackToExplore} className="flex items-center gap-2 text-text-muted hover:text-white text-xs font-bold transition-colors">
               <ChevronRight size={14} className="rotate-180" /> Back to Explore
@@ -265,7 +267,6 @@ function NetworksPageContent() {
                     setMinTvl={setMinTvl} ecoSize={ecoSize} setEcoSize={setEcoSize}
                 />
               </div>
-              <button className="w-full py-4 bg-brand-purple text-[#1a0a2e] rounded-2xl font-bold text-xs uppercase tracking-widest shadow-lg shadow-brand-purple/20">Connect Wallet</button>
             </aside>
 
             <div className="lg:col-span-9 space-y-6">

@@ -55,7 +55,7 @@ export default function InfrastructurePage() {
         </div>
         
         <div className="flex flex-col lg:flex-row items-center gap-2 w-full lg:w-auto">
-          <div className="flex bg-bg-primary p-1 rounded-xl border border-white/5 overflow-x-auto">
+          <div className="flex bg-bg-primary p-1 rounded-xl border border-white/5 overflow-x-auto w-full lg:w-auto custom-scrollbar">
             {['All', 'RPC', 'Oracles', 'Bridges', 'Storage'].map(tag => (
               <button 
                 key={tag} 
