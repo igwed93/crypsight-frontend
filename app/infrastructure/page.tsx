@@ -1,14 +1,26 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Search, Filter, ArrowRight } from 'lucide-react';
 import InfraCard from '@/components/infrastructure/InfraCard';
 import { INFRA_DATA } from '@/data/infraData';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation'; // Added
 
 export default function InfrastructurePage() {
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const [selectFilter, setSelectedFilter] = useState<string>("All");
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  
+  const searchParams = useSearchParams(); // Added
+
+  // Sync searchQuery with URL parameters on load
+  useEffect(() => {
+    const query = searchParams.get('q');
+    if (query) {
+      setSearchQuery(query);
+    }
+  }, [searchParams]);
 
   const toggleSelection = (id: string) => {
     setSelectedIds((prev) =>
@@ -20,7 +32,6 @@ export default function InfrastructurePage() {
     setSelectedFilter((prev) => (prev === filter ? "All" : filter));
   };
 
-  // Helper function to find project by ID across all categories
   const findProjectById = (id: string) => {
     for (const category of Object.values(INFRA_DATA)) {
       const project = category.find(p => p.id === id);
@@ -34,7 +45,7 @@ export default function InfrastructurePage() {
       <Link href="/" className="text-brand-cyan hover:text-white">
         &larr; Back to Home
       </Link>
-      {/* Header Section */}
+      
       <header className="flex flex-col items-center text-center space-y-6 py-4 mb-4">
         <h1 className="text-5xl lg:text-7xl font-extrabold tracking-tighter text-text-nav leading-tight">
           Infrastructure <span className="text-brand-purple bg-clip-text bg-gradient-to-r from-brand-purple to-brand-purple-dim">Discovery</span>
@@ -44,13 +55,14 @@ export default function InfrastructurePage() {
         </p>
       </header>
 
-      {/* Filter Bar */}
       <div className="bg-bg-card backdrop-blur-md p-3 rounded-2xl border border-white/5 shadow-2xl flex flex-col lg:flex-row gap-4 items-center">
         <div className="flex-1 flex items-center gap-4 px-6 py-4 bg-white/5 rounded-xl border border-white/5 group focus-within:border-brand-cyan/30 transition-all">
           <Search size={18} className="text-brand-cyan/50" />
           <input 
             placeholder="Search infrastructure..." 
             className="bg-transparent border-none px-4 outline-none text-sm text-white w-full lg:w-80 placeholder:text-text-muted"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
           />
         </div>
         
@@ -74,34 +86,48 @@ export default function InfrastructurePage() {
         </div>
       </div>
 
-      {/* Sections Mapping & Filter Logic*/}
       <div className="space-y-24 mt-16">
         {Object.entries(INFRA_DATA)
             .filter(([key]) => {
                 const normalizedKey = key === 'rpc' ? 'RPC' : key.charAt(0).toUpperCase() + key.slice(1);
                 return selectFilter === 'All' || selectFilter === normalizedKey;
             })
-            .map(([key, projects], index) => (
-            <InfraSection 
-                key={key}
-                title={key.toUpperCase()} 
-                subtitle={`Leading ${key} solutions for web3 developers.`}
-                projects={projects}
-                selectedIds={selectedIds}
-                onToggle={toggleSelection}
-                showStatus={index === 0} 
-            />
-            ))}
+            .map(([key, projects]) => {
+                const filteredProjects = projects.filter(project => {
+                    if (!searchQuery.trim()) return true;
+                    const query = searchQuery.toLowerCase();
+                    return (
+                        project.name.toLowerCase().includes(query) ||
+                        project.type.toLowerCase().includes(query) ||
+                        project.description.toLowerCase().includes(query) ||
+                        project.category.toLowerCase().includes(query)
+                    );
+                });
+                
+                if (filteredProjects.length === 0) return null;
+                const sectionIndex = Object.keys(INFRA_DATA).indexOf(key);
+                
+                return (
+                    <InfraSection 
+                        key={key}
+                        title={key.toUpperCase()} 
+                        subtitle={`Leading ${key} solutions for web3 developers.`}
+                        projects={filteredProjects}
+                        selectedIds={selectedIds}
+                        onToggle={toggleSelection}
+                        showStatus={sectionIndex === 0} 
+                    />
+                );
+            })}
       </div>
 
       {selectedIds.length > 0 && (
         <div className="fixed bottom-4 lg:bottom-10 left-1/2 -translate-x-1/2 z-300 animate-in fade-in slide-in-from-bottom-10 duration-500 max-w-[95vw] lg:max-w-none">
             <div className="bg-bg-card backdrop-blur-2xl border border-brand-cyan px-4 lg:px-8 py-4 lg:py-5 rounded-3xl flex flex-col sm:flex-row items-center gap-4 lg:gap-16 shadow-[0_20px_60px_rgba(0,0,0,0.5),0_0_20px_rgba(76,215,246,0.1)]">
                 
-                {/* Left side: Counter */}
                 <div className="flex items-center gap-3 lg:gap-5">
                     <div className="relative">
-                        <h3 className="w-12 h-10 lg:w-14 lg:h-12 p-1 rounded-full bg-bg-primary text-brand-cyan font-black text-base lg:text-lg border border-brand-cyan">
+                        <h3 className="w-12 h-10 lg:w-14 lg:h-12 p-1 rounded-full bg-bg-primary text-brand-cyan font-black text-base lg:text-lg border border-brand-cyan flex items-center justify-center">
                             {selectedIds.length}
                         </h3>
                     </div>
@@ -110,7 +136,6 @@ export default function InfrastructurePage() {
                     </div>
                 </div>
 
-                {/* Middle side: Logos */}
                 <div className="flex space-x-2">
                     {selectedIds.length >= 1 && (
                         <img 
@@ -128,7 +153,6 @@ export default function InfrastructurePage() {
                     )}
                 </div>
 
-                {/* Right side: Actions */}
                 <div className="flex items-center gap-2 lg:gap-4">
                     <button 
                     onClick={() => setSelectedIds([])}
@@ -137,7 +161,7 @@ export default function InfrastructurePage() {
                     Clear All
                     </button>
                     <div 
-                    className="flex gap-1 lg:gap-2 text-bg-primary font-bold px-6 lg:px-10 py-2.5 lg:py-3.5 rounded-2xl text-[10px] lg:text-xs uppercase tracking-[0.15em] hover:scale-[1.03] active:scale-[0.98] transition-all shadow-[0_10px_20px_rgba(76,215,246,0.2)] cursor-pointer bg-gradient-to-r from-brand-cyan to-brand-cyan-dim"
+                    className="flex gap-1 lg:gap-2 text-bg-primary font-bold px-6 lg:px-10 py-2.5 lg:py-3.5 rounded-2xl text-[10px] lg:text-xs uppercase tracking-[0.15em] hover:scale-[1.03] active:scale-[0.98] transition-all shadow-[0_10px_20px_rgba(76,215,246,0.2)] cursor-pointer bg-gradient-to-r from-brand-cyan to-brand-cyan-dim items-center"
                     >
                         <button>Compare Now</button><ArrowRight size={14} className="lg:w-4 lg:h-4 text-bg-primary" />
                     </div>
