@@ -22,12 +22,15 @@ export default function Navbar() {
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border-card bg-bg-secondary/80 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
         {/* Logo */}
-        <Link
-          href="/"
-          className="gradient-text text-xl font-bold tracking-tight"
-        >
-          Crypsight
-        </Link>
+        <div className="flex items-center gap-1 cursor-pointer">
+          <img src="/images/crypsight-logo.png" alt="Crypsight Logo" className="h-12 w-22" />
+          <Link
+            href="/"
+            className="gradient-text text-xl font-bold tracking-tight"
+          >
+            Crypsight
+          </Link>
+        </div>
 
         {/* Desktop nav — hidden on mobile */}
         <nav className="hidden md:flex items-center gap-8">

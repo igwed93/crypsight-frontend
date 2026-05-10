@@ -28,9 +28,8 @@ export default function Hero() {
           </h1>
 
           <p className="max-w-md text-base leading-relaxed text-text-secondary">
-            Crypsight Etheric decodes complex on-chain data into high-fidelity
-            editorial insights. Navigate the Web3 frontier with the precision of
-            the Neon Architect.
+            Crypsight helps users explore, compare, and analyze blockchain ecosystems, DeFi protocols, and on-chain
+            metrics through a clean and visual intelligence platform.
           </p>
 
           <div className="flex flex-wrap items-center gap-4">
