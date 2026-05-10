@@ -20,9 +20,9 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border-card bg-bg-secondary/80 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
+      <div className="flex h-16 max-w-7xl items-center justify-between px-6">
         {/* Logo */}
-        <div className="flex items-center gap-1 cursor-pointer">
+        <div className="flex items-center gap-1 cursor-pointer relative top-0 -left-6">
           <img src="/images/crypsight-logo.png" alt="Crypsight Logo" className="h-12 w-22" />
           <Link
             href="/"
