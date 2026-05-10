@@ -1,0 +1,18 @@
+<svg width="1000" height="1000" viewBox="0 0 1000 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M410.5 440C390 460 380 490 380 520C380 586.274 433.726 640 500 640C566.274 640 620 586.274 620 520C620 490 610 460 589.5 440" stroke="#0088FF" stroke-width="45" stroke-linecap="round"/>
+  <circle cx="500" cy="520" r="45" fill="#0088FF"/>
+  
+  <path d="M340 500C340 400 420 330 500 330C580 330 660 400 660 500" stroke="#0088FF" stroke-width="25" stroke-linecap="round" opacity="0.8"/>
+  <path d="M350 450L300 550M700 550L650 450" stroke="#0088FF" stroke-width="20" stroke-linecap="round"/>
+  
+  <line x1="500" y1="330" x2="500" y2="440" stroke="#0088FF" stroke-width="12"/>
+  <circle cx="500" cy="310" r="15" fill="#0088FF"/>
+  
+  <line x1="410" y1="440" x2="410" y2="550" stroke="#0088FF" stroke-width="12"/>
+  <circle cx="410" cy="565" r="15" fill="#55CCFF"/>
+  
+  <circle cx="560" cy="390" r="20" fill="#0088FF"/>
+  <circle cx="390" cy="460" r="18" fill="#55CCFF"/>
+
+  <text x="500" y="750" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="90" fill="white">Crypsight</text>
+</svg>

@@ -43,7 +43,7 @@ export default function Hero() {
               asChild
               className="rounded-md border-border-card bg-bg-card px-6 py-2.5 text-sm font-medium text-white hover:bg-bg-card-hover hover:text-white"
             >
-              <Link href="/documentation">View Documentation</Link>
+              <Link href="/networks">Explore Networks</Link>
             </Button>
           </div>
 

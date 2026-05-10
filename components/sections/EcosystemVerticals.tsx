@@ -70,7 +70,7 @@ const verticals: Vertical[] = [
     title: 'Infrastructure',
     description:
       'Gas monitoring, RPC health, and validator performance metrics.',
-    href: '/explore/infrastructure',
+    href: '/infrastructure',
     iconColor: 'text-brand-purple',
     boxColor: 'bg-brand-purple/10',
   },
